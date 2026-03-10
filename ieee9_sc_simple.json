@@ -1,0 +1,415 @@
+{
+  "meta": {
+    "name": "Summary Grid",
+    "f_hz": 50.0,
+    "sn_mva": 100.0,
+    "source_file": "out.json",
+    "note": "Converted from the original export into a flat JSON structure. The short-circuit-ready model uses calibrated synchronous-machine data for G1, G2, and G3 and links each machine to its power station transformer."
+  },
+  "buses": [
+    {
+      "index": 0,
+      "name": "Bus 1",
+      "vn_kv": 16.5,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 1,
+      "name": "Bus 2",
+      "vn_kv": 18.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 2,
+      "name": "Bus 8",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 3,
+      "name": "Bus 9",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 4,
+      "name": "Bus 3",
+      "vn_kv": 13.800000190734863,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 5,
+      "name": "Bus 6",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 6,
+      "name": "Bus 4",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 7,
+      "name": "Bus 5",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    },
+    {
+      "index": 8,
+      "name": "Bus 7",
+      "vn_kv": 230.0,
+      "type": "b",
+      "zone": "Nine-bus System",
+      "in_service": true
+    }
+  ],
+  "reference_ext_grids": [
+    {
+      "name": "G1",
+      "bus": 0,
+      "vm_pu": 1.039999961853027,
+      "va_degree": 0.0,
+      "in_service": true,
+      "s_sc_max_mva": 247.5,
+      "s_sc_min_mva": 60.0,
+      "rx_max": 0.1,
+      "rx_min": 0.1
+    }
+  ],
+  "generators": [
+    {
+      "name": "G1",
+      "bus": 0,
+      "p_mw": 71.5999984741211,
+      "vm_pu": 1.039999961853027,
+      "sn_mva": 250.0,
+      "min_p_mw": 0.0,
+      "max_p_mw": 250.0,
+      "min_q_mvar": -999.0,
+      "max_q_mvar": 999.0,
+      "in_service": true,
+      "vn_kv": 16.5,
+      "xdss_pu": 0.22,
+      "rdss_ohm": 0.0,
+      "cos_phi": 0.85,
+      "pg_percent": 0.0,
+      "power_station_trafo_name": "T1",
+      "slack": true
+    },
+    {
+      "name": "G2",
+      "bus": 1,
+      "p_mw": 163.0,
+      "vm_pu": 1.024999976158142,
+      "sn_mva": 200.0,
+      "min_p_mw": 40.0,
+      "max_p_mw": 163.1999969482422,
+      "min_q_mvar": -76.80000305175781,
+      "max_q_mvar": 115.20000457763672,
+      "in_service": true,
+      "vn_kv": 18.0,
+      "xdss_pu": 0.22,
+      "rdss_ohm": 0.0,
+      "cos_phi": 0.85,
+      "pg_percent": 0.0,
+      "power_station_trafo_name": "T2",
+      "slack": false
+    },
+    {
+      "name": "G3",
+      "bus": 4,
+      "p_mw": 85.0,
+      "vm_pu": 1.024999976158142,
+      "sn_mva": 150.0,
+      "min_p_mw": 25.0,
+      "max_p_mw": 108.80000305175781,
+      "min_q_mvar": -51.20000076293945,
+      "max_q_mvar": 76.80000305175781,
+      "in_service": true,
+      "vn_kv": 13.8,
+      "xdss_pu": 0.24,
+      "rdss_ohm": 0.0,
+      "cos_phi": 0.85,
+      "pg_percent": 0.0,
+      "power_station_trafo_name": "T3",
+      "slack": false
+    }
+  ],
+  "loads": [
+    {
+      "name": "Load C",
+      "bus": 2,
+      "p_mw": 100.0,
+      "q_mvar": 35.0,
+      "in_service": true
+    },
+    {
+      "name": "Load B",
+      "bus": 5,
+      "p_mw": 90.0,
+      "q_mvar": 30.0,
+      "in_service": true
+    },
+    {
+      "name": "Load A",
+      "bus": 7,
+      "p_mw": 125.0,
+      "q_mvar": 50.0,
+      "in_service": true
+    }
+  ],
+  "lines": [
+    {
+      "name": "Line 5-7",
+      "from_bus": 7,
+      "to_bus": 8,
+      "length_km": 1.0,
+      "r_ohm_per_km": 16.92799949645996,
+      "x_ohm_per_km": 85.16899871826172,
+      "c_nf_per_km": 1841.2635326385498,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    },
+    {
+      "name": "Line 7-8",
+      "from_bus": 8,
+      "to_bus": 2,
+      "length_km": 1.0,
+      "r_ohm_per_km": 4.496500015258789,
+      "x_ohm_per_km": 38.0880012512207,
+      "c_nf_per_km": 896.5516090393066,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    },
+    {
+      "name": "Line 8-9",
+      "from_bus": 2,
+      "to_bus": 3,
+      "length_km": 1.0,
+      "r_ohm_per_km": 6.295100212097168,
+      "x_ohm_per_km": 53.32320022583008,
+      "c_nf_per_km": 1257.5786590576172,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    },
+    {
+      "name": "Line 6-9",
+      "from_bus": 3,
+      "to_bus": 5,
+      "length_km": 1.0,
+      "r_ohm_per_km": 20.631000518798828,
+      "x_ohm_per_km": 89.93000030517578,
+      "c_nf_per_km": 2154.1621685028076,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    },
+    {
+      "name": "Line 4-6",
+      "from_bus": 5,
+      "to_bus": 6,
+      "length_km": 1.0,
+      "r_ohm_per_km": 8.993000030517578,
+      "x_ohm_per_km": 48.667999267578125,
+      "c_nf_per_km": 950.7598400115967,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    },
+    {
+      "name": "Line 4-5",
+      "from_bus": 7,
+      "to_bus": 6,
+      "length_km": 1.0,
+      "r_ohm_per_km": 5.289999961853027,
+      "x_ohm_per_km": 44.96500015258789,
+      "c_nf_per_km": 1059.017014503479,
+      "max_i_ka": 1.0,
+      "parallel": 1,
+      "in_service": true
+    }
+  ],
+  "trafos": [
+    {
+      "name": "T2",
+      "hv_bus": 8,
+      "lv_bus": 1,
+      "sn_mva": 200.0,
+      "vn_hv_kv": 230.0,
+      "vn_lv_kv": 18.0,
+      "vk_percent": 12.5,
+      "vkr_percent": 0.0,
+      "shift_degree": 150.0,
+      "vector_group": "YNd",
+      "in_service": true
+    },
+    {
+      "name": "T3",
+      "hv_bus": 3,
+      "lv_bus": 4,
+      "sn_mva": 150.0,
+      "vn_hv_kv": 230.0,
+      "vn_lv_kv": 13.800000190734863,
+      "vk_percent": 8.789999961853027,
+      "vkr_percent": 0.0,
+      "shift_degree": 150.0,
+      "vector_group": "YNd",
+      "in_service": true
+    },
+    {
+      "name": "T1",
+      "hv_bus": 6,
+      "lv_bus": 0,
+      "sn_mva": 250.0,
+      "vn_hv_kv": 230.0,
+      "vn_lv_kv": 16.5,
+      "vk_percent": 14.399999618530273,
+      "vkr_percent": 0.0,
+      "shift_degree": 150.0,
+      "vector_group": "YNd",
+      "in_service": true
+    }
+  ],
+  "switches": [
+    {
+      "bus": 8,
+      "element": 0,
+      "et": "t",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 3,
+      "element": 1,
+      "et": "t",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 6,
+      "element": 2,
+      "et": "t",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 7,
+      "element": 0,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch 2"
+    },
+    {
+      "bus": 8,
+      "element": 0,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch 1"
+    },
+    {
+      "bus": 8,
+      "element": 1,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 2,
+      "element": 1,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 2,
+      "element": 2,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 3,
+      "element": 2,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 3,
+      "element": 3,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 5,
+      "element": 3,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 5,
+      "element": 4,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 6,
+      "element": 4,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 7,
+      "element": 5,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    },
+    {
+      "bus": 6,
+      "element": 5,
+      "et": "l",
+      "type": "CB",
+      "closed": true,
+      "name": "Switch"
+    }
+  ]
+}

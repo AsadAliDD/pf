@@ -1,0 +1,11 @@
+Name	Grid	Nominal voltage	Ik"	Sk"
+		kV	kA	MVA
+Bus 1	Nine-bus System	16,5	57,012	1629,3
+Bus 2	Nine-bus System	18	47,749	1488,7
+Bus 3	Nine-bus System	13,8	48,364	1156
+Bus 4	Nine-bus System	230	3,053	1216,2
+Bus 5	Nine-bus System	230	2,256	898,7
+Bus 6	Nine-bus System	230	2,146	855
+Bus 7	Nine-bus System	230	3,081	1227,4
+Bus 8	Nine-bus System	230	2,455	978,2
+Bus 9	Nine-bus System	230	2,771	1104

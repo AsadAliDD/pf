@@ -1,0 +1,9 @@
+[project]
+name = "pf"
+version = "0.1.0"
+description = "Convert a PowerFactory IEEE 9-bus export into a flat JSON and pandapower short-circuit input."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandapower>=3.4.0",
+]
