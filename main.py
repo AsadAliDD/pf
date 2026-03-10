@@ -12,6 +12,7 @@ SIMPLE_JSON = ROOT / "ieee9_sc_simple.json"
 PP_JSON = ROOT / "ieee9_sc_pandapower.json"
 PF_RESULTS_CSV = ROOT / "pf_results.csv"
 PP_RESULTS_CSV = ROOT / "pandapower_results.csv"
+COMPARISON_RESULTS_CSV = ROOT / "comparison_results.csv"
 
 SC_GENERATOR_DEFAULTS = {
     "G1": {
@@ -395,6 +396,42 @@ def compare_with_powerfactory(
     )
 
 
+def export_comparison_csv(
+    simple_path: Path = SIMPLE_JSON,
+    results_path: Path = PF_RESULTS_CSV,
+    output_path: Path = COMPARISON_RESULTS_CSV,
+) -> Path:
+    try:
+        import pandas as pd
+        import pandapower.shortcircuit as sc
+    except ModuleNotFoundError as exc:
+        raise SystemExit(
+            "pandapower and pandas are required. Install the project dependencies first."
+        ) from exc
+
+    net = build_pandapower_net(simple_path)
+    sc.calc_sc(net, case="max", fault="3ph")
+    pf = pd.read_csv(results_path, sep="\t", skiprows=[1], decimal=",")
+    pf = pf.rename(
+        columns={
+            "Ik\"": "ik_pf_ka",
+            "Sk\"": "sk_pf_mva",
+            "Name": "name",
+        }
+    )
+    merged = net.bus[["name", "vn_kv"]].join(
+        net.res_bus_sc[["ikss_ka", "skss_mw"]]
+    ).merge(
+        pf[["name", "ik_pf_ka", "sk_pf_mva"]], on="name", how="left"
+    )
+    merged["ik_abs_error_ka"] = merged["ikss_ka"] - merged["ik_pf_ka"]
+    merged["ik_rel_error_percent"] = merged["ik_abs_error_ka"] / merged["ik_pf_ka"] * 100
+    merged["sk_abs_error_mva"] = merged["skss_mw"] - merged["sk_pf_mva"]
+    merged["sk_rel_error_percent"] = merged["sk_abs_error_mva"] / merged["sk_pf_mva"] * 100
+    merged.to_csv(output_path, index=False)
+    return output_path
+
+
 def export_pandapower_results_csv(
     simple_path: Path = SIMPLE_JSON, output_path: Path = PP_RESULTS_CSV
 ) -> Path:
@@ -449,6 +486,14 @@ def parse_args() -> argparse.Namespace:
     export_cmd.add_argument("--source", type=Path, default=SIMPLE_JSON)
     export_cmd.add_argument("--output", type=Path, default=PP_RESULTS_CSV)
 
+    export_compare_cmd = subparsers.add_parser(
+        "export-compare-csv",
+        help="Export the PowerFactory vs pandapower comparison table to CSV.",
+    )
+    export_compare_cmd.add_argument("--source", type=Path, default=SIMPLE_JSON)
+    export_compare_cmd.add_argument("--results", type=Path, default=PF_RESULTS_CSV)
+    export_compare_cmd.add_argument("--output", type=Path, default=COMPARISON_RESULTS_CSV)
+
     return parser.parse_args()
 
 
@@ -466,6 +511,9 @@ def main() -> None:
         compare_with_powerfactory(args.source, args.results)
     elif args.command == "export-csv":
         path = export_pandapower_results_csv(args.source, args.output)
+        print(path)
+    elif args.command == "export-compare-csv":
+        path = export_comparison_csv(args.source, args.results, args.output)
         print(path)
 
 

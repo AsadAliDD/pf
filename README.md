@@ -30,6 +30,12 @@ Export the pandapower short-circuit results to CSV:
 uv run python main.py export-csv
 ```
 
+Export the PowerFactory vs pandapower comparison to CSV:
+
+```bash
+uv run python main.py export-compare-csv
+```
+
 ## Notes
 
 The original `out.json` is already a pandapower JSON export. The generated
